@@ -30,6 +30,10 @@
     justify-content: flex-end;
 }
 
+.demos {
+    margin-left: 20px;
+}
+
 .main {
     margin-left: 20px;
 }
@@ -46,6 +50,7 @@
     height: 300px;
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
     align-items: center;
 }
 
@@ -69,6 +74,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
 .photo-grid-item {
@@ -99,4 +105,13 @@
     background-color: #5995DA;
     flex: initial;
     width: 300px;
+}
+
+nav {
+    background-color: rgba(0,139, 139,0.4);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
 }
