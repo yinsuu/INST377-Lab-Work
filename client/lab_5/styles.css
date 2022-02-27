@@ -10,6 +10,13 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   background-color: darkslategray;
+  height: 100%;
+  min-height: 100%;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
 }
 
 /* Page Layout */
@@ -31,13 +38,20 @@ body {
   width: 100%;
   border-radius: 3px;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 form {
   background-color: white;
-  width: 80%;
-  border-radius:  3px;
-  padding: 15px;
+  width: 50%;
+  border-radius: 3px;
+  padding: 50px;
+  margin: 0 0 40px 0;
+  margin-left: 100px;
+}
+
+.button {
+  background-color: greenyellow;
 }
 
 .section {
