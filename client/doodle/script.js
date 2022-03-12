@@ -78,8 +78,54 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(downTimerId);
     }
 
+    function control(e) {
+        if (e.key === 'ArrowLeft') {
+            moveLeft();
+        } else if (e.key === 'ArrowRight') {
+            moveRight();
+        } else if (e.key === 'ArrowUp') {
+            moveStraight();
+        }
+    }
+
+    function moveLeft() {
+        if (isGoingLeft) {
+            clearInterval(rightTimerId);
+            isGoingRight = false;
+        }
+        isGoingLeft = true;
+        leftTimerId = setInterval(function () {
+            if (doodlerLeftSpace >= 0) {
+                doodlerLeftSpace -= 5;
+                doodler.style.left = doodlerLeftSpace = 'px';
+            } else moveRight();
+        }, 20);
+    }
+
+    function moveRight() {
+        if (isGoingLeft) {
+            clearInterval(leftTimerId);
+            isGoingLeft = false;
+        }
+        isGoingRight = true;
+        rightTimerId = setInterval(function () {
+            if (doodlerLeftSpace <= 340) {
+                doodlerLeftSpace += 5;
+                doodler.style.left = doodlerLeftSpace = 'px';
+            } else moveLeft();
+        }, 20);
+    }
+
+    function moveLeft() {
+        isGoingLeft = false;
+        isGoingRight = false;
+        clearInterval(leftTimerId);
+        clearInterval(rightTimerId);
+        }
+    }
+
     function start() {
-        if (!isGamerOver) {
+        if (!isGameOver) {
             createPlatforms();
             createDoodler();
             movePlatforms();
