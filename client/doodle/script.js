@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isGoingRight = false;
   let leftTimerId;
   let rightTimerId;
-  let score;
+  let score = 0;
 
   function createDoodler() {
     grid.appendChild(doodler);
@@ -119,11 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function control(e) {
-    if (e.key === 'ArrowLeft') {
+    if (e.key === "ArrowLeft") {
       moveLeft();
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === "ArrowRight") {
       moveRight();
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === "ArrowUp") {
       moveStraight();
     }
   }
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     leftTimerId = setInterval(function () {
       if (doodlerLeftSpace >= 0) {
         doodlerLeftSpace -= 5;
-        doodler.style.left = doodlerLeftSpace = 'px';
+        doodler.style.left = doodlerLeftSpace + 'px';
       } else moveRight();
     }, 30);
   }
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rightTimerId = setInterval(function () {
       if (doodlerLeftSpace <= 340) {
           doodlerLeftSpace += 5;
-          doodler.style.left = doodlerLeftSpace = 'px';
+          doodler.style.left = doodlerLeftSpace + 'px';
       } else moveLeft();
     }, 30);
   }
