@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacky' Lab 5</title>
+    <title>Jacky' Lab 6</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="columns is-centered">
-            <h1 class="header">Jacky's Lab 5</h1>
-
-            <div class="box">
-                <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="GET" class="field">
+    <div class="wrapper columns content-wrapper">
+        <div class="container">
+            <div class="notification is-warning is-full">
+                <h1 class="form-header">Jacky's Lab 6</h1>
+            </div>
+        </div>
+        <div class = "columns">
+            <div class="column is-narrow">
+                <form class = "main_form box" method="GET">
                 <div class="field">
                     <label class="label">First Name</label>
                     <div class="control">
@@ -43,20 +46,22 @@
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button">Submit</button>
+                        <button type="submit" class="submit button is-primary">Submit</button>
                     </div>
                 </div>
                 </form>
             </div>
-                <div class="columns is-vcentered"> 
-                    <div class="column is-half">
-                        <div class="box time">
-                            <p>This is going to be something in two weeks.</p>
-                        </div>   
-                    </div>
+
+            <div class="column is-three-quarters"> 
+                <div id ="third_box" class="box">
+                    <p>Restaurant's List</p>
+                    <ul class="resto-list"></ul>
                 </div>
+            </div>
+
         </div> 
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
