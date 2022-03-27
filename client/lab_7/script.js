@@ -45,22 +45,44 @@ function getRandomIntInclusive(min, max) {
       submit.style.display = 'block';
       
       let currentArray = [];
-      resto.addEventListener('input', async (event)=>{
-        if (currentArray === undefined) { return; }
+      resto.addEventListener('input', async (event) => {
         console.log(event.target.value);
-        currentArray.filter((item) => { 
-            console.log(item);
-            console.log(item.name);
-            return item.name.includes(event.target.value);
+
+        if (currentArray.length < 1) {
+          // console.log('empty');
+          return;
+        }
+
+        const selectResto = currentArray.filter((item) => {
+          const lowerName = item.name.toLowerCase();
+          const lowerValue = event.target.value.toLowerCase();
+          return lowerName.includes(lowerValue);
         });
-        //console.log(matchResto);
+        
+        console.log(selectResto);
+        createHtmlList(selectResto);
+      });
+
+      zipcode.addEventListener('input', async (event) => {
+        console.log(event.target.value);
+
+        if (currentArray.length < 1) {
+          // console.log('empty');
+          return;
+        }
+        const selectNum = currentArray.filter((item) => {
+          const lowerName = item.name.toLowerCase();
+          const lowerValue = event.target.value.toLowerCase();
+          return lowerName.includes(lowerValue);
+        });
+        createHtmlList(selectNum);
       });
 
       form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
         submitEvent.preventDefault(); // This prevents your page from refreshing!
         console.log('form submission'); // this is substituting for a "breakpoint"
-        const restoArray = dataHandler(arrayFromJson.data);
-        createHtmlList(restoArray);
+        currentArray = dataHandler(arrayFromJson.data);
+        createHtmlList(currentArray);
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
       });
