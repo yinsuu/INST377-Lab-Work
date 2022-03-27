@@ -33,11 +33,29 @@ function getRandomIntInclusive(min, max) {
   async function mainEvent() { // the async keyword means we can make API requests
     const form = document.querySelector('.main_form');
     const submit = document.querySelector('.submit');
+    
+    const resto = document.querySelector('#resto_name');
+    const zipcode = document.querySelector('#zipcode');
     submit.style.display = 'none';
+    
     const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
     const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    if (arrayFromJson.data.length > 0) {
+    
+    if (arrayFromJson.data.length > 0) { // This if statement is to prevent a race condition on data load
       submit.style.display = 'block';
+      
+      let currentArray = [];
+      resto.addEventListener('input', async (event)=>{
+        if (currentArray === undefined) { return; }
+        console.log(event.target.value);
+        currentArray.filter((item) => { 
+            console.log(item);
+            console.log(item.name);
+            return item.name.includes(event.target.value);
+        });
+        //console.log(matchResto);
+      });
+
       form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
         submitEvent.preventDefault(); // This prevents your page from refreshing!
         console.log('form submission'); // this is substituting for a "breakpoint"
