@@ -71,7 +71,7 @@ function getRandomIntInclusive(min, max) {
           return;
         }
         const selectNum = currentArray.filter((item) => {
-          const lowerName = item.name.toLowerCase();
+          const lowerName = item.zip.toLowerCase();
           const lowerValue = event.target.value.toLowerCase();
           return lowerName.includes(lowerValue);
         });
