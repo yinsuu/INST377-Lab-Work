@@ -20,7 +20,7 @@ function getRandomIntInclusive(min, max) {
   
   function initMap(targetId) {
       const latLong = [38.784, -76.872];
-      const map = L.map('map').setView(latLong, 13);
+      const map = L.map(targetId).setView(latLong, 13);
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
@@ -68,16 +68,15 @@ function getRandomIntInclusive(min, max) {
     const retrievalVar = 'restaurants';
     submit.style.display = 'none';
     
-    if (localStorage.getItem(retrievalVar) === undefined) {
-    const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    console.log(arrayFromJson);
-    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+    if (localStorage.getItem(retrievalVar) === null) {
+        const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+        const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+        localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
     }
 
     const storedDataString = localStorage.getItem(retrievalVar);
     const storedDataArray = JSON.parse(storedDataString);
-    console.log(storedData);
+    console.log(storedDataArray);
     //let arrayFromJson = {data : []}; // TODO: Remove debug tool
 
     if (storedDataArray.length > 0) { // This if statement is to prevent a race condition on data load
